@@ -1,11 +1,10 @@
 provider "aws" {
   region = "us-east-1"
 
-#   assume_role {
-#     role_arn = "arn:aws:iam::851725445607:role/tf-role"
-#     session_name = "tf-app-session"
-#   }
-  
+  # assume_role {
+  #   role_arn     = "arn:aws:iam::945356073626:role/terraform-assume-role"
+  #   session_name = "terraform-app-session"
+  # }
 }
 
 terraform {
@@ -17,8 +16,8 @@ terraform {
     }
   }
   backend "s3" {
-    bucket       = "dev-myapp-app-s3-bucket"
-    key          = "envs/dev/infra/terraform.tfstate"
+    bucket       = "cheetah-terraform-app-infra-state-bucket"
+    key          = "envs/dev/app/terraform.tfstate"
     region       = "us-east-1"
     encrypt      = true
     use_lockfile = true
